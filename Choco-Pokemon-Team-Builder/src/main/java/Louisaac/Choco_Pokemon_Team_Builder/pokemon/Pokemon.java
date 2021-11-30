@@ -1,10 +1,11 @@
 package Louisaac.Choco_Pokemon_Team_Builder.pokemon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pokemon
 {
-	public static Pokemon[] pokedex = new Pokemon[395];
+	public static List<Pokemon> pokedex = new ArrayList<>();
 
 	public String name;
 
@@ -25,7 +26,7 @@ public class Pokemon
 
 	public static Pokemon getPokemon(int index)
 	{
-		return pokedex[index - 1];
+		return pokedex.get(index - 1);
 	}
 
 	public boolean isStrongAgainst(Type defensive)

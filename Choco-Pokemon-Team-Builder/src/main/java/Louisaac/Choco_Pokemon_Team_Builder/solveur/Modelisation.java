@@ -7,7 +7,9 @@ import org.chocosolver.solver.variables.IntVar;
 
 import Louisaac.Choco_Pokemon_Team_Builder.constraint.AllStrengthsCovered;
 import Louisaac.Choco_Pokemon_Team_Builder.constraint.ChosenGeneration;
+import Louisaac.Choco_Pokemon_Team_Builder.constraint.ChosenRarity;
 import Louisaac.Choco_Pokemon_Team_Builder.pokemon.Pokemon;
+import Louisaac.Choco_Pokemon_Team_Builder.pokemon.Rarity;
 
 public class Modelisation
 {
@@ -15,11 +17,11 @@ public class Modelisation
 
 	private IntVar[] team;
 
-	public Modelisation(int teamSize, int[] pokemonList)
+	public Modelisation(int teamSize, int pokemonAmount)
 	{
 		this.model = new Model();
 
-		this.team = this.model.intVarArray(teamSize, pokemonList);
+		this.team = this.model.intVarArray(teamSize, 1, pokemonAmount);
 
 	}
 
@@ -35,7 +37,8 @@ public class Modelisation
 		this.team[0].eq(395).post();
 
 		(new Constraint("AllStrengthsCovered", new AllStrengthsCovered(team))).post();
-		(new Constraint("ChosenGeneration", new ChosenGeneration(team, 2, 3, 4))).post();
+		(new Constraint("ChosenGeneration", new ChosenGeneration(team, 4))).post();
+		(new Constraint("ChosenRarity", new ChosenRarity(team, Rarity.NORMAL, Rarity.MYTHICAL))).post();
 	}
 	
 	private void launchSolver()
