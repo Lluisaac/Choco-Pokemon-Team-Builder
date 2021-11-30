@@ -1,4 +1,4 @@
-package Louisaac.Choco_Pokemon_Team_Builder.solveur;
+package Louisaac.Choco_Pokemon_Team_Builder.constraint;
 
 import org.chocosolver.solver.constraints.Propagator;
 import org.chocosolver.solver.constraints.PropagatorPriority;

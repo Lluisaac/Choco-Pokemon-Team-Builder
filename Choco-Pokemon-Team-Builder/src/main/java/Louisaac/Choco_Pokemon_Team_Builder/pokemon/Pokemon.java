@@ -13,16 +13,6 @@ public class Pokemon
 	public int gen;
 
 	public Rarity rarity;
-
-	static
-	{
-		pokedex[0] = new Pokemon("Louis", 1, Rarity.MYTHICAL, Type.NORMAL, Type.BUG);
-		pokedex[1] = new Pokemon("Isaac", 1, Rarity.MYTHICAL, Type.POISON);
-		pokedex[2] = new Pokemon("Kevin", 1, Rarity.NORMAL, Type.GROUND);
-		pokedex[3] = new Pokemon("Durand", 2, Rarity.LEGENDARY, Type.PSYCHIC, Type.DARK);
-		pokedex[4] = new Pokemon("Delahaye", 3, Rarity.LEGENDARY, Type.FIRE, Type.DRAGON);
-		pokedex[394] = new Pokemon("Pingoleon", 4, Rarity.NORMAL, Type.WATER, Type.STEEL);
-	}
 	
 	public Pokemon(String name, int gen, Rarity rarity, Type... types)
 	{

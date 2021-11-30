@@ -5,6 +5,8 @@ import org.chocosolver.solver.constraints.Constraint;
 import org.chocosolver.solver.exception.InvalidSolutionException;
 import org.chocosolver.solver.variables.IntVar;
 
+import Louisaac.Choco_Pokemon_Team_Builder.constraint.AllStrengthsCovered;
+import Louisaac.Choco_Pokemon_Team_Builder.constraint.ChosenGeneration;
 import Louisaac.Choco_Pokemon_Team_Builder.pokemon.Pokemon;
 
 public class Modelisation
@@ -31,8 +33,9 @@ public class Modelisation
 	private void buildConstraints()
 	{
 		this.team[0].eq(395).post();
-		
+
 		(new Constraint("AllStrengthsCovered", new AllStrengthsCovered(team))).post();
+		(new Constraint("ChosenGeneration", new ChosenGeneration(team, 2, 3, 4))).post();
 	}
 	
 	private void launchSolver()
@@ -61,7 +64,7 @@ public class Modelisation
 			str += Pokemon.getPokemon(this.team[i].getValue()) + ", ";
 		}
 		
-		str.substring(0, str.length() - 2);
+		str = str.substring(0, str.length() - 2);
 		
 		System.out.println(str);
 	}
