@@ -36,11 +36,26 @@ public class Modelisation
 	{
 		this.team[0].eq(395).post();
 
+		this.forbid(387);
+		this.forbid(388);
+		this.forbid(389);
+		this.forbid(390);
+		this.forbid(391);
+		this.forbid(392);
+
 		(new Constraint("AllStrengthsCovered", new AllStrengthsCovered(team))).post();
 		(new Constraint("ChosenGeneration", new ChosenGeneration(team, 4))).post();
 		(new Constraint("ChosenRarity", new ChosenRarity(team, Rarity.NORMAL, Rarity.MYTHICAL))).post();
 	}
 	
+	private void forbid(int index)
+	{
+		for (int i = 1; i < this.team.length; i++)
+		{
+			this.team[i].ne(index).post();
+		}
+	}
+
 	private void launchSolver()
 	{
 		try
