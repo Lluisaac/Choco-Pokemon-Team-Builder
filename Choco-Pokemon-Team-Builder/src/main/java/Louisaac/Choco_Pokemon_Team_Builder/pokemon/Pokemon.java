@@ -41,10 +41,16 @@ public class Pokemon
 
 		return false;
 	}
+
+	public static void add(Pokemon pokemon)
+	{
+		pokedex.add(pokemon);
+		System.out.println(pokemon);
+	}
 	
 	@Override
 	public String toString()
 	{
-		return this.name;
+		return this.name + ": generation " + this.gen + ", " + this.rarity + ", " + this.types;
 	}
 }

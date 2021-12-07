@@ -2,7 +2,7 @@ package Louisaac.Choco_Pokemon_Team_Builder.pokemon;
 
 public enum Type
 {
-	STEEL, FIGHTING, DRAGON, WATER, ELECTRIK, FAIRY, FIRE, ICE, BUG, NORMAL, GRASS, POISON, PSYCHIC, ROCK, GROUND, GHOST, DARK, FLYING;
+	STEEL, FIGHTING, DRAGON, WATER, ELECTRIC, FAIRY, FIRE, ICE, BUG, NORMAL, GRASS, POISON, PSYCHIC, ROCK, GROUND, GHOST, DARK, FLYING;
 
 	private static final DamageModifier[][] typeArray = new DamageModifier[Type.values().length][Type.values().length];
 
@@ -30,5 +30,10 @@ public enum Type
 	public DamageModifier getDefensiveModifier(Type other)
 	{
 		return typeArray[other.ordinal()][this.ordinal()];
+	}
+
+	public static void setDamageModifier(String offensiveName, String defensiveName, DamageModifier modifier)
+	{
+		setDamageModifier(Type.valueOf(offensiveName), Type.valueOf(defensiveName), modifier);
 	}
 }
